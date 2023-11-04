@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Nav from './views/Nav';
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import Todo from './views/Todo';
 
 
@@ -33,8 +33,10 @@ function App() {
     let newTodos = todos
     newTodos = newTodos.filter(item => item.id !==id)
     setTodo(newTodos)
-
   }
+  useEffect(() => {
+    console.log('run todo')
+  }, [])
 
   return (
     <div className="App">
