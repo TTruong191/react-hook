@@ -3,7 +3,7 @@ import './App.css';
 import Nav from './views/Nav';
 import { useState } from 'react';
 import Todo from './views/Todo';
-import { type } from '@testing-library/user-event/dist/type';
+
 
 function App() {
   // const name = 'Tobie';
@@ -14,7 +14,7 @@ function App() {
     { id: 'todo1', title: 'Chơi game', type: 'A1' },
     { id: 'todo2', title: 'Đá bóng', type: 'A1' },
     { id: 'todo3', title: 'Hít đất', type: 'A2' },
-    { id: 'todo4', title: 'Bóng chuyền', type: 'A2' },
+    { id: 'todo4', title: 'Bóng chuyền', type: 'A2' }
   ])
 
   const handleEventClick = (event) => {
@@ -22,12 +22,17 @@ function App() {
       alert('empty title')
       return;
     }
-    const todo = { id: 'todo4', title: address }
+    const todo = { id: Math.floor ((Math.random()*100) + 1), title: address }
     setTodo([...todos, todo])
     setAddress('')
   }
   const handleOnchangeInput = (event) => {
     setAddress(event.target.value)
+  }
+  const handleDeleteTodo = (id) => {
+    let newTodos = todos
+    newTodos = newTodos.filter(item => item.id !==id)
+    setTodo(newTodos)
 
   }
 
@@ -39,13 +44,15 @@ function App() {
         <h1>Hello world with  React and name {name}</h1>
         {/* <p>{JSON.stringify(obj)}</p> */}
         <Todo
-          myData={todos}
-          title="All todo"
+          todos = {todos}
+          title = "All todo"
+          handleDeleteTodo = {handleDeleteTodo}
         />
 
         <Todo
-          myData={todos.filter(item => item.type === "A1")}
-          title="Type todo"
+          todos = {todos.filter(item => item.type === "A1")}
+          title = "Type todo"
+          handleDeleteTodo = {handleDeleteTodo}
         />
 
         <input type="text" value={address} onChange={(event) => handleOnchangeInput(event)} />
