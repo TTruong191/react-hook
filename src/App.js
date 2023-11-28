@@ -1,8 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 import Nav from './views/Nav';
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Todo from './views/Todo';
+import Covid from './views/Covid';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
       alert('empty title')
       return;
     }
-    const todo = { id: Math.floor ((Math.random()*100) + 1), title: address }
+    const todo = { id: Math.floor((Math.random() * 100) + 1), title: address }
     setTodo([...todos, todo])
     setAddress('')
   }
@@ -31,7 +32,7 @@ function App() {
   }
   const handleDeleteTodo = (id) => {
     let newTodos = todos
-    newTodos = newTodos.filter(item => item.id !==id)
+    newTodos = newTodos.filter(item => item.id !== id)
     setTodo(newTodos)
   }
   useEffect(() => {
@@ -44,8 +45,10 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Hello world with  React and name {name}</h1>
+        <Covid />
+
         {/* <p>{JSON.stringify(obj)}</p> */}
-        <Todo
+        {/* <Todo
           todos = {todos}
           title = "All todo"
           handleDeleteTodo = {handleDeleteTodo}
@@ -58,7 +61,7 @@ function App() {
         />
 
         <input type="text" value={address} onChange={(event) => handleOnchangeInput(event)} />
-        <button type='button' onClick={(event) => handleEventClick(event)}>Click me</button>
+        <button type='button' onClick={(event) => handleEventClick(event)}>Click me</button> */}
 
       </header>
     </div>
