@@ -3,9 +3,10 @@ import axios from "axios";
 
 const Movie = () => {
     const [dataMovie, setDataMovie] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
     useEffect(() => {
-        setTimeout(() => {
+        // setTimeout(() => {
         const fetchData = async () => {
             try {
                 let res = await axios.get('https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=1');
@@ -20,14 +21,18 @@ const Movie = () => {
                 //     })
                 // }
                 setDataMovie(data)
-                setLoading(false)
-            } catch (error) {
+                setIsLoading(false)
+                setIsError(false)
+            } catch (error) {               
+                setIsError(true)
+                setIsLoading(false)
                 // Xử lý lỗi ở đây
-                console.log(error);
+                // console.log(error);
+                // alert(error.message);
             }
         };
         fetchData();
-    }, 3000)
+        // }, 1000)
     }, []);
 
 
@@ -44,7 +49,7 @@ const Movie = () => {
                 </thead>
 
                 <tbody>
-                    {loading === false  && dataMovie && dataMovie.length > 0 &&
+                    {isLoading === false && dataMovie && dataMovie.length > 0 &&
                         dataMovie.map(item => {
                             return (
                                 <tr key={item._id}>
@@ -56,14 +61,18 @@ const Movie = () => {
                             )
                         })
                     }
-                   
+
 
                 </tbody>
-             
+
             </table>
-            {loading === true && 
-                    <p >Loading......</p>
-                    }
+            {isLoading === true &&
+                <p >Loading......</p>
+            }
+
+            {isError === true &&
+                <p >Something wrong......</p>
+            }
         </>
     )
 }
