@@ -1,39 +1,9 @@
 import { useEffect, useState } from "react";
+import useFetch from "../customize/fetch";
 import axios from "axios";
 
 const Movie = () => {
-    const [dataMovie, setDataMovie] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [isError, setIsError] = useState(false);
-    useEffect(() => {
-        // setTimeout(() => {
-        const fetchData = async () => {
-            try {
-                let res = await axios.get('https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=1');
-                // console.log('>>>>>>>>>>>', res.data.items);
-                // Xử lý dữ liệu response ở đây
-                let data = res && res.data.items ? res.data.items : [];
-                //// format date to string
-                // if (data && data.length > 0) {
-                //     data.map(item => {
-                //         item.date = moment(item.date).format('DD/MM/YYYY')
-                //         return item;
-                //     })
-                // }
-                setDataMovie(data)
-                setIsLoading(false)
-                setIsError(false)
-            } catch (error) {               
-                setIsError(true)
-                setIsLoading(false)
-                // Xử lý lỗi ở đây
-                // console.log(error);
-                // alert(error.message);
-            }
-        };
-        fetchData();
-        // }, 1000)
-    }, []);
+    const {data: dataMovie, isError, isLoading} = useFetch('https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=1')
 
 
     return (
