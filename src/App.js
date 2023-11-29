@@ -3,7 +3,7 @@ import './App.css';
 import Nav from './views/Nav';
 import { useState, useEffect } from 'react';
 import Todo from './views/Todo';
-import Covid from './views/Covid';
+import Movie from './views/Movie';
 
 
 function App() {
@@ -45,7 +45,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1>Hello world with  React and name {name}</h1>
-        <Covid />
+        <Movie />
 
         {/* <p>{JSON.stringify(obj)}</p> */}
         {/* <Todo

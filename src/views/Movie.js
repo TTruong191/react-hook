@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Covid = () => {
+const Movie = () => {
     const [dataMovie, setDataMovie] = useState([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
+        setTimeout(() => {
         const fetchData = async () => {
             try {
                 let res = await axios.get('https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=1');
@@ -18,13 +20,14 @@ const Covid = () => {
                 //     })
                 // }
                 setDataMovie(data)
+                setLoading(false)
             } catch (error) {
                 // Xử lý lỗi ở đây
                 console.log(error);
             }
         };
         fetchData();
-
+    }, 3000)
     }, []);
 
 
@@ -41,7 +44,7 @@ const Covid = () => {
                 </thead>
 
                 <tbody>
-                    {dataMovie && dataMovie.length > 0 &&
+                    {loading === false  && dataMovie && dataMovie.length > 0 &&
                         dataMovie.map(item => {
                             return (
                                 <tr key={item._id}>
@@ -53,12 +56,16 @@ const Covid = () => {
                             )
                         })
                     }
-
+                   
 
                 </tbody>
+             
             </table>
+            {loading === true && 
+                    <p >Loading......</p>
+                    }
         </>
     )
 }
 
-export default Covid;
+export default Movie;
