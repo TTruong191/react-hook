@@ -4,6 +4,7 @@ import Nav from './views/Nav';
 import { useState, useEffect } from 'react';
 import Todo from './views/Todo';
 import Movie from './views/Movie';
+import Countdown from './views/Countdown';
 
 
 function App() {
@@ -23,27 +24,36 @@ function App() {
       alert('empty title')
       return;
     }
+
     const todo = { id: Math.floor((Math.random() * 100) + 1), title: address }
     setTodo([...todos, todo])
     setAddress('')
   }
+
   const handleOnchangeInput = (event) => {
     setAddress(event.target.value)
   }
+
   const handleDeleteTodo = (id) => {
     let newTodos = todos
     newTodos = newTodos.filter(item => item.id !== id)
     setTodo(newTodos)
   }
+
   useEffect(() => {
     console.log('run todo')
   }, [])
+
+  const onTimesup = () => {
+    alert('Times up')
+  }
 
   return (
     <div className="App">
       <Nav />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <Countdown onTimesup={onTimesup}/>
         <h1>Hello world with  React and name {name}</h1>
         <Movie />
 

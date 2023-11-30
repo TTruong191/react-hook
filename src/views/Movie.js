@@ -1,31 +1,43 @@
-import { useEffect, useState } from "react";
+
+import moment from "moment";
 import useFetch from "../customize/fetch";
-import axios from "axios";
+
 
 const Movie = () => {
-    const {data: dataMovie, isError, isLoading} = useFetch('https://ophim1.com/danh-sach/phim-moi-cap-nhat?page=1')
+
+    // lấy ngày hiện tại
+    // const today = new Date(new Date().setHours(0, 0, 0, 0));
+    // const priorDate = moment().subtract(30, 'days');
+
+
+    const { data: dataMovie, isError, isLoading }
+    // = useFetch(`https://api.themoviedb.org/3/movie/popular?api_key=eb58f7104aedff7b352a18678d149c30&page=1?from=${priorDate.toISOString()}&to=${today.toISOString()}`)
+        = useFetch('https://api.themoviedb.org/3/movie/popular?api_key=eb58f7104aedff7b352a18678d149c30&page=1')
 
 
     return (
         <>
-            <h3>List Movies</h3>
+            <p>List Movies</p>
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Origin_name</th>
-                        <th>Year</th>
+                        <th>Original_title</th>
+                        <th>Overview</th>
+                        <th>Vote_average</th>
+                        <th>Release_date</th>
                     </tr>
                 </thead>
 
                 <tbody>
+
                     {isLoading === false && dataMovie && dataMovie.length > 0 &&
                         dataMovie.map(item => {
                             return (
-                                <tr key={item._id}>
-                                    <td>{item.name}</td>
-                                    <td>{item.origin_name}</td>
-                                    <td>{item.year}</td>
+                                <tr key={item.id}>
+                                    <td>{item.original_title}</td>
+                                    <td>{item.overview}</td>
+                                    <td>{item.vote_average}</td>
+                                    <td>{item.release_date}</td>
 
                                 </tr>
                             )
