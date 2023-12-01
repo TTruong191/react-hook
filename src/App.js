@@ -4,12 +4,7 @@ import { useState, useEffect } from 'react';
 import Todo from './views/Todo';
 import Movie from './views/Movie';
 import Countdown from './views/Countdown';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 
 const App = () => {
   // const name = 'Tobie';
@@ -53,38 +48,28 @@ const App = () => {
   }
 
   return (
-    <Router>
-      <div className="App">
-        <Nav />
-        <header className="App-header">
-          {/* <p>{JSON.stringify(obj)}</p> */}
-        </header>
-        <Switch>
-          <Route exact path="/">
-            <Movie />
-          </Route>
-          <Route path="/timer">
-            <h1>Hello world with  React and name {name}</h1>
-            <Countdown onTimesup={onTimesup} />
-          </Route>
-          <Route path="/todo">
-            <Todo
-              todos={todos}
-              title="All todo"
-              handleDeleteTodo={handleDeleteTodo}
-            />
-            {/* <Todo
-              todos={todos.filter(item => item.type === "A1")}
-              title="Type todo"
-              handleDeleteTodo={handleDeleteTodo}
-            /> */}
-            <input type="text" value={address} onChange={(event) => handleOnchangeInput(event)} />
-            <button type='button' onClick={(event) => handleEventClick(event)}>Click me</button>
+    <div className="App">
+      <Nav />
+      <header className="App-header">
+        {/* <p>{JSON.stringify(obj)}</p> */}
+      </header>
+      <Routes>
+        <Route exact path="/" element={<Movie />} />
+        <Route exact path="/timer" element={<Countdown onTimesup={onTimesup} />} />
+        <Route exact path="/todo" element={
+          <>
+          <Todo
+            todos={todos}
+            title="All todo"
+            handleDeleteTodo={handleDeleteTodo}
+          />
+          <input type="text" value={address} onChange={handleOnchangeInput} />
+          <button type='button' onClick={handleEventClick}>Click me</button>
+        </>
+      } />
 
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+      </Routes >
+    </div>
   );
 }
 
