@@ -1,5 +1,4 @@
-
-import moment from "moment";
+import App from "../App";
 import useFetch from "../customize/fetch";
 
 
@@ -16,8 +15,8 @@ const Movie = () => {
 
 
     return (
-        <>
-            <p>List Movies</p>
+        <div className="movie">
+            <h2>List Movies</h2>
             <table>
                 <thead>
                     <tr>
@@ -55,7 +54,7 @@ const Movie = () => {
             {isError === true &&
                 <p >Something wrong......</p>
             }
-        </>
+        </div>
     )
 }
 
