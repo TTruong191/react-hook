@@ -1,17 +1,18 @@
-import App from "../App";
+// import moment from "moment";
+// import App from "../App";
 import useFetch from "../customize/fetch";
 
 
 const Movie = () => {
 
     // lấy ngày hiện tại
-    // const today = new Date(new Date().setHours(0, 0, 0, 0));
-    // const priorDate = moment().subtract(30, 'days');
+    // const today = moment().startOf('day').toISOString(true);
+    // const priorDate = moment().startOf('day').subtract(31, 'day').toISOString(true);
 
 
-    const { data: dataMovie, isError, isLoading }
-    // = useFetch(`https://api.themoviedb.org/3/movie/popular?api_key=eb58f7104aedff7b352a18678d149c30&page=1?from=${priorDate.toISOString()}&to=${today.toISOString()}`)
-        = useFetch('https://api.themoviedb.org/3/movie/popular?api_key=eb58f7104aedff7b352a18678d149c30&page=1')
+    const { dataMv: dataMovie, isError, isLoading }
+    // = useFetch(`https://api.themoviedb.org/3/movie/popular?api_key=eb58f7104aedff7b352a18678d149c30&page=1?from=${priorDate}&to=${today}`)
+        = useFetch('https://api.themoviedb.org/3/movie/popular?api_key=eb58f7104aedff7b352a18678d149c30&page=1', true)
 
 
     return (

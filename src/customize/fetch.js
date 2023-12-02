@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment/moment";
 
-const useFetch = (url) => {
+const useFetch = (url, isMovie) => {
     const [data, setData] = useState([]);
+    const [dataMv, setDataMv] = useState([]);
+
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
     useEffect(() => {
@@ -13,14 +15,17 @@ const useFetch = (url) => {
                 let res = await axios.get(url);
                 // console.log('>>>>>>>>>>>', res.data.results);
                 // Xử lý dữ liệu response ở đây
-                let data = res && res.data.results ? res.data.results : [];
+                let dataMv = res && res.data.results ? res.data.results : [];
+                let data = res && res.data ? res.data : [];
+
                 // format date to string
-                if (data && data.length > 0) {
-                    data.map(item => {
+                if (dataMv.results && dataMv.results.length > 0 && isMovie === true) {
+                    dataMv.map(item => {
                         item.release_date = moment(item.release_date).format('DD/MM/YYYY')
                         return item;
                     })
                 }
+                setDataMv(dataMv)
                 setData(data)
                 setIsLoading(false)
                 setIsError(false)
@@ -34,11 +39,14 @@ const useFetch = (url) => {
                 // alert(error.message);
             }
         }
-        fetchData();
+        setTimeout(() => {
+            fetchData();
+        },2000)
+       
         // }, 1000)
     }, [url]);
     
-    return {data, isError, isLoading}
+    return {dataMv, data, isError, isLoading}
 }
 
 export default useFetch;

@@ -5,11 +5,13 @@ import Todo from './views/Todo';
 import Movie from './views/Movie';
 import Countdown from './views/Countdown';
 import { Routes, Route } from 'react-router-dom';
+import Blog from './views/Blog';
+import DetailBlog from './views/DetailBlog';
 
 const App = () => {
   // const name = 'Tobie';
   // const obj = { name: 'Obito', age: '25' }
-  const [name, setName] = useState('Tobie')
+  // const [name, setName] = useState('Tobie')
   const [address, setAddress] = useState('')
   const [todos, setTodo] = useState([
     { id: 'todo1', title: 'Chơi game', type: 'A1' },
@@ -67,6 +69,8 @@ const App = () => {
           <button type='button' onClick={handleEventClick}>Click me</button>
         </>
       } />
+      <Route  path="/blog" element={<Blog />} />
+      <Route  path="/blog/:id" element={<DetailBlog />} />
 
       </Routes >
     </div>
