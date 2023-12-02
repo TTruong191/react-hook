@@ -4,6 +4,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: stretch;
 
     .blog {
         border: 1px solid gray;
@@ -12,6 +13,10 @@
         margin: 10px 10px;
         max-width: 400px;
         text-align: left !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+         align-items: center;
 
         .content {
             margin: 10px 0;
@@ -26,7 +31,7 @@
         .btdetail {
            
             padding: 2px 17px;
-            margin: 0 40px !important;
+            align-self: center;
         }
     }
 }
