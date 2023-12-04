@@ -41,7 +41,7 @@ const useFetch = (url, isMovie) => {
         }
         setTimeout(() => {
             fetchData();
-        },2000)
+        },1000)
        
         // }, 1000)
     }, [url]);

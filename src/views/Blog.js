@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Blog = () => {
     const { data: dataBlogs, isError, isLoading }
-        = useFetch('https://jsonplaceholder.typicode.com/posts', false);
+        = useFetch(`https://jsonplaceholder.typicode.com/posts`, false);
     let newData = [];
     if (dataBlogs && dataBlogs.length > 0) {
         newData = dataBlogs.slice(0, 12)

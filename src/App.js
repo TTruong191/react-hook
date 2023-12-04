@@ -56,9 +56,9 @@ const App = () => {
         {/* <p>{JSON.stringify(obj)}</p> */}
       </header>
       <Routes>
-        <Route exact path="/" element={<Movie />} />
-        <Route exact path="/timer" element={<Countdown onTimesup={onTimesup} />} />
-        <Route exact path="/todo" element={
+        <Route  path="/" element={<Movie />} />
+        <Route  path="/timer" element={<Countdown onTimesup={onTimesup} />} />
+        <Route  path="/todo" element={
           <>
           <Todo
             todos={todos}
