@@ -16,7 +16,7 @@ const DetailBlog = () => {
     return (
         <>
           
-            <div><span onClick={handleBackData} style={{ color: "green" }}>&lt;-- Back</span></div>
+            <div><span onClick={handleBackData} style={{ color: "rgb(0, 181, 18)" }}>&lt;-- Back</span></div>
             <div className="blogdetail">
                 {dataBlogDetail &&
                     <>

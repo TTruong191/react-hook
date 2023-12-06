@@ -1,12 +1,14 @@
 import './App.css';
-import Nav from './views/Nav';
+import Nav from './components/Nav';
 import { useState, useEffect } from 'react';
-import Todo from './views/Todo';
-import Movie from './views/Movie';
-import Countdown from './views/Countdown';
+import Todo from './components/Todo';
+import Movie from './components/Movie';
+import Countdown from './components/Countdown';
 import { Routes, Route } from 'react-router-dom';
-import Blog from './views/Blog';
-import DetailBlog from './views/DetailBlog';
+import Blog from './components/Blog';
+import DetailBlog from './components/DetailBlog';
+import AddNewBlog from './components/AddNewBlog';
+import NotFound from './components/NotFound';
 
 const App = () => {
   // const name = 'Tobie';
@@ -71,7 +73,8 @@ const App = () => {
       } />
       <Route  path="/blog" element={<Blog />} />
       <Route  path="/blog/:id" element={<DetailBlog />} />
-
+      <Route  path="/add-blog" element={<AddNewBlog />} />
+      <Route path="*" element={<NotFound />} />
       </Routes >
     </div>
   );

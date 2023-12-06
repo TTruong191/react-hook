@@ -36,10 +36,39 @@
     }
 }
 
-blogdetail {
+.blogdetail {
         border: 1px solid gray;
         border-radius: 3px;
         padding: 10px;
         margin: 10px 10px;
        
+}
+.add-new-blog {
+    padding: 10px;
+    max-width: 500px;
+    border: 1px solid rgb(95, 95, 95);
+    border-radius: 2px;
+    margin: 50px auto;
+
+    .add-text {
+        margin: 10px 0;
+
+    }
+    .inputs-data {
+        text-align: left;
+        padding: 5px;
+        margin: 5px;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .btn-submit {
+        cursor: pointer;
+    }
+}
+
+.btn-add-blog {
+    margin-top: 20px;
+    text-align: left !important;
 }

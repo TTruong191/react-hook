@@ -1,4 +1,4 @@
-import '../views/Nav.scss'
+import '../components/Nav.scss'
 import { Link, NavLink } from 'react-router-dom';
 function Nav() {
 
