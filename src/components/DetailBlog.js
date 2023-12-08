@@ -3,10 +3,10 @@ import useFetch from "../customize/fetch";
 import './Blog.scss';
 
 const DetailBlog = () => {
-    let nagigate = useNavigate();
+    let navgigate = useNavigate();
     let { id } = useParams();
     const handleBackData = () => {
-        nagigate('/blog');
+        navgigate('/blog');
     }
 
     const { data: dataBlogDetail, isError, isLoading }
