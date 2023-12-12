@@ -9,6 +9,7 @@ import Blog from './components/Blog';
 import DetailBlog from './components/DetailBlog';
 import AddNewBlog from './components/AddNewBlog';
 import NotFound from './components/NotFound';
+import SearchYoutube from './components/SearchYoutube';
 
 const App = () => {
   // const name = 'Tobie';
@@ -74,6 +75,7 @@ const App = () => {
       <Route  path="/blog" element={<Blog />} />
       <Route  path="/blog/:id" element={<DetailBlog />} />
       <Route  path="/add-blog" element={<AddNewBlog />} />
+      <Route  path="/search-youtube" element={<SearchYoutube />} />
       <Route path="*" element={<NotFound />} />
       </Routes >
     </div>
